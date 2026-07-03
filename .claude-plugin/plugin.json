@@ -1,0 +1,20 @@
+{
+  "name": "consulto-legal-mcp",
+  "displayName": "Consulto",
+  "version": "0.2.0",
+  "description": "Skills jurídicas mexicanas y conector MCP para consultar jurisprudencia SCJN, corpus iuris internacional y control difuso desde Claude. Cada cita con registro digital y link oficial.",
+  "author": {
+    "name": "Emiliano Mier"
+  },
+  "homepage": "https://github.com/EmilianoMierUjed/skills_Consulto",
+  "repository": "https://github.com/EmilianoMierUjed/skills_Consulto",
+  "license": "Apache-2.0",
+  "keywords": [
+    "legal",
+    "mexico",
+    "jurisprudencia",
+    "scjn",
+    "derechos-humanos",
+    "mcp"
+  ]
+}

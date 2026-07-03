@@ -1,0 +1,14 @@
+{
+  "name": "consulto",
+  "owner": {
+    "name": "Emiliano Mier"
+  },
+  "description": "Marketplace oficial de Consulto: jurisprudencia SCJN, corpus iuris internacional y control difuso vía MCP y skills.",
+  "plugins": [
+    {
+      "name": "consulto-legal-mcp",
+      "source": "./",
+      "description": "Conector MCP jurídico + 3 skills de metodología (jurisprudencia, corpus iuris, control difuso). Cada cita con registro digital y link oficial."
+    }
+  ]
+}

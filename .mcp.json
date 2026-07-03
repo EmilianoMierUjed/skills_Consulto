@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "consulto-legal": {
+      "type": "http",
+      "url": "https://137-184-20-161.sslip.io/mcp",
+      "oauth": {}
+    }
+  }
+}
