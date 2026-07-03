@@ -5,7 +5,7 @@ la jurisprudencia de la SCJN (311,537 tesis) y el corpus internacional de derech
 (268,886 documentos: Corte IDH, CIDH, comités ONU, OIT, tratados). Cada respuesta trae su
 cita con registro digital y link oficial.
 
-Necesitas una cuenta activa de Consulto (hay prueba gratis sin tarjeta).
+Necesitas una cuenta activa de Consulto.
 Guía completa por herramienta: la página **Conectar** del sitio de Consulto.
 
 ## Claude Code (recomendado): plugin oficial
