@@ -1,16 +1,17 @@
 # Consulto — plugin y skills jurídicas
 
 **Consulto** conecta tu asistente de IA (Claude, Claude Code, Codex, opencode, ChatGPT) con
-la jurisprudencia de la SCJN (311,537 tesis) y el corpus internacional de derechos humanos
-(268,886 documentos: Corte IDH, CIDH, comités ONU, OIT, tratados). Cada respuesta trae su
-cita con registro digital y link oficial.
+jurisprudencia y sentencias de la SCJN (311,537 tesis y 105,473 engroses), además del corpus
+internacional de derechos humanos (268,886 documentos: Corte IDH, CIDH, comités ONU, OIT,
+tratados). Cada respuesta trae su cita con registro digital, documento oficial o link
+verificable.
 
 Necesitas una cuenta activa de Consulto.
 Guía completa por herramienta: la página **Conectar** del sitio de Consulto.
 
 ## Claude Code (recomendado): plugin oficial
 
-Instala el conector MCP y las tres skills en un paso:
+Instala el conector MCP y las cuatro skills en un paso:
 
 ```
 /plugin marketplace add EmilianoMierUjed/skills_Consulto
@@ -42,11 +43,12 @@ Pega el endpoint `https://137-184-20-161.sslip.io/mcp` en la configuración MCP 
 herramienta; el inicio de sesión OAuth se abre solo. Las skills de este repositorio
 (`skills/*/SKILL.md`) sirven como instrucciones de metodología en cualquier asistente.
 
-## Las 3 skills
+## Las 4 skills
 
 | Skill | Qué hace |
 |---|---|
 | `jurisprudencia` | Búsqueda SCJN con priorización de criterios obligatorios por circuito y links al Semanario |
+| `sentencias` | Búsqueda de engroses SCJN con snippets acotados, links oficiales y vínculo tesis→sentencia |
 | `corpus-iuris` | Estándares internacionales separados por valor vinculante, con URL oficial en cada fuente |
 | `control-difuso` | Metodología de 4 pasos de constitucionalidad y convencionalidad con citas verificables |
 
