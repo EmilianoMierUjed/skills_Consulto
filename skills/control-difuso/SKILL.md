@@ -1,6 +1,6 @@
 ---
 name: control-difuso
-description: "Control difuso de constitucionalidad y convencionalidad (parámetro de regularidad → interpretación conforme → pro persona → inaplicación) con citas verificables y links oficiales vía el conector MCP legal. Usa esta skill cuando el usuario diga control difuso, control de convencionalidad, inaplica esta norma, interpretación conforme, principio pro persona, bloque de constitucionalidad, o variantes similares."
+description: "Control difuso de constitucionalidad y convencionalidad con el principio pro persona como criterio rector transversal (parámetro de regularidad → interpretación conforme → preferencia normativa o inaplicación), con citas verificables y links oficiales vía el conector MCP legal. Usa esta skill cuando el usuario diga control difuso, control de convencionalidad, inaplica esta norma, interpretación conforme, principio pro persona, bloque de constitucionalidad, o variantes similares."
 ---
 
 # Control difuso de constitucionalidad y convencionalidad
@@ -11,10 +11,22 @@ Toda cita sale de las bases del conector MCP legal (`jurisprudencias` y `corpus_
 nunca inventes criterios, tratados ni texto, y **cada cita lleva su link oficial** (reglas en `fts_help`
 y en las skills de jurisprudencia y corpus-iuris).
 
-El análisis sigue esta metodología **en orden estricto**. Mantenla pragmática: cada paso se resuelve con
-lo necesario para litigar, sin teoría innecesaria.
+## Criterio rector: principio pro persona
 
-## 1. PARÁMETRO DE REGULARIDAD
+El principio pro persona (**art. 1º, párr. 2 CPEUM** — "favoreciendo en todo tiempo a las personas la
+protección más amplia"; **art. 29 CADH**) es el **criterio rector de todo el análisis, no una etapa**.
+Rige "en todo tiempo" y opera en dos dimensiones que se aplican en cada paso:
+
+- **Preferencia interpretativa** → entre varias lecturas de una norma, la más protectora; y la más
+  estricta cuando se trata de *restringir* derechos.
+- **Preferencia normativa** → entre varias normas aplicables, la más protectora, aplicable **directamente**,
+  sin necesidad de forzar una interpretación conforme que salve una norma menos favorable.
+
+La secuencia que sigue es el **orden de exposición** que espera el foro (tesis P. LXIX/2011), no una
+jerarquía que subordine el pro persona a la interpretación conforme. Mantén el análisis pragmático:
+cada paso se resuelve con lo necesario para litigar, sin teoría innecesaria.
+
+## 1. Parámetro de regularidad
 
 Identifica la norma o acto cuestionado y construye el bloque de constitucionalidad/convencionalidad aplicable:
 - **CPEUM** — todos sus derechos, no solo el Capítulo I.
@@ -25,44 +37,58 @@ Identifica la norma o acto cuestionado y construye el bloque de constitucionalid
 - **Criterios de órganos convencionales de supervisión** — comités ONU, CIDH, relatorías — **cuando amplíen la protección**
   (`comite_dictamenes`, `observaciones_generales`, `cidh_informes`, `relatores_informes`, `uhri_recomendaciones`).
 
-Producto del paso: lista de derechos en juego y fuentes concretas del bloque, cada una con cita y link.
+Aplicando ya la **preferencia normativa**, identifica si en el bloque existe una norma más favorable que
+**desplace directamente** a la nacional al caso concreto, sin necesidad de rescatarla por interpretación.
 
-## 2. INTERPRETACIÓN CONFORME
+Producto del paso: lista de derechos en juego y fuentes concretas del bloque, cada una con cita y link,
+señalando la norma más protectora disponible.
 
-Busca armonizar la norma nacional con el bloque anterior. **No es jerarquía sino armonización**:
+## 2. Interpretación conforme
+
+Busca armonizar la norma nacional con el bloque anterior. **No es jerarquía sino armonización**, y la
+interpretación conforme en sentido estricto **es la dimensión interpretativa del pro persona** (no un
+ejercicio distinto):
 - Enuncia las interpretaciones posibles de la norma.
 - Descarta las incompatibles con el parámetro constitucional/convencional.
-- El resultado debe favorecer la **protección más amplia**.
+- Entre las que sobreviven, elige la que favorezca la **protección más amplia**.
+
+No fuerces una lectura artificiosa para "salvar" una norma restrictiva cuando el bloque ofrece una norma
+más protectora: en ese caso corresponde la preferencia normativa (desenlace **b**), no una conforme forzada.
 
 Producto del paso: la(s) interpretación(es) que salvan la norma, o la constatación fundada de que no existe ninguna.
 
-## 3. PRINCIPIO PRO PERSONA
+## 3. Desenlace
 
-- Conflicto entre varias **normas** aplicables → aplica la más favorable a la persona.
-- Conflicto entre varias **interpretaciones** de una misma norma → aplica la más favorable a la persona.
-- Si se trata de **restringir** derechos → aplica la interpretación más estricta para la limitación.
+El resultado del control es **una** de estas tres salidas (todas al caso concreto, efecto *inter partes*;
+nunca declares invalidez general — eso es control concentrado):
 
-## 4. CONCLUSIÓN
+- **(a) Interpretación conforme viable** — una lectura protectora salva la norma. Exponla y aplícala.
+- **(b) Preferencia normativa directa** — existe en el bloque una norma más favorable que desplaza a la
+  nacional al caso concreto. Aplícala directamente, sin pretender rescatar la norma menos protectora.
+- **(c) Inaplicación al caso concreto** — ninguna interpretación conforme salva la norma y no hay norma de
+  reemplazo más favorable. Inaplícala solo respecto de las partes.
 
-**Solo si la interpretación conforme no salva la norma**, concluye que procede la **inaplicación al caso concreto**.
-Nunca declares invalidez general (eso es control concentrado); el efecto es inter partes.
+**Candado (Contradicción de Tesis 293/2011):** si la restricción proviene de una **restricción expresa de
+la propia Constitución**, advierte que la SCJN hace prevalecer esa restricción constitucional sobre la
+norma internacional más favorable. Señálalo expresamente para no generar una expectativa que el foro no sostiene.
 
 ## Salida estructurada
 
 ```markdown
 # Control difuso — {norma o acto}
 **Hechos relevantes:** {síntesis}
+**Criterio rector:** pro persona (preferencia interpretativa y normativa, "en todo tiempo")
 
 ## 1. Norma o acto cuestionado
 ## 2. Parámetro de regularidad (bloque aplicable)
    {fichas con cita + link oficial: CPEUM, jurisprudencia, tratados, Corte IDH, órganos convencionales}
+   {marca la norma más protectora disponible del bloque}
 ## 3. Interpretación conforme
-   {interpretaciones posibles, descartes y por qué}
-## 4. Pro persona
-   {norma/interpretación más favorable y su fundamento}
-## 5. Conclusión
-   {interpretación conforme que salva la norma, O inaplicación al caso concreto y sus efectos}
-## 6. Tabla de fuentes
+   {interpretaciones posibles, descartes y por qué; la elegida justificada por pro persona}
+## 4. Desenlace
+   {una de: (a) interpretación conforme viable / (b) preferencia normativa directa / (c) inaplicación al caso concreto}
+   {si aplica, candado CT 293/2011 por restricción constitucional expresa}
+## 5. Tabla de fuentes
 | # | Fuente | Identificador/Registro | Carácter | Link |
 ```
 

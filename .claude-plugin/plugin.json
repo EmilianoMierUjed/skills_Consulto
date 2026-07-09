@@ -1,7 +1,7 @@
 {
   "name": "consulto-legal-mcp",
   "displayName": "Consulto",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Skills jurídicas mexicanas y conector MCP para consultar jurisprudencia, sentencias SCJN, corpus iuris internacional y control difuso desde Claude. Cada cita con registro digital, documento oficial o link verificable.",
   "author": {
     "name": "Emiliano Mier"
