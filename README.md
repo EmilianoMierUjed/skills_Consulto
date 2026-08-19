@@ -1,47 +1,49 @@
 # Consulto — plugin y skills jurídicas
 
-**Consulto** conecta tu asistente de IA (Claude, Claude Code, Codex, opencode, ChatGPT) con
-jurisprudencia y sentencias de la SCJN (311,537 tesis y 105,473 engroses), además del corpus
-internacional de derechos humanos (268,886 documentos: Corte IDH, CIDH, comités ONU, OIT,
-tratados). Cada respuesta trae su cita con registro digital, documento oficial o link
-verificable.
+**Consulto** conecta tu asistente de IA (Claude, Claude Code, Cursor, Codex, opencode,
+ChatGPT) con jurisprudencia y sentencias de la SCJN (311,673 tesis y 105,803 engroses),
+las 316 leyes federales vigentes (55,224 artículos) y el corpus internacional de derechos
+humanos (277,239 documentos: Corte IDH, CIDH, comités ONU, OIT, tratados). Cada respuesta
+trae su cita con registro digital, documento oficial o link verificable.
 
-Necesitas una cuenta activa de Consulto.
-Guía completa por herramienta: la página **Conectar** del sitio de Consulto.
+No necesitas cuenta previa: se crea al iniciar sesión, con 20 búsquedas gratis y sin
+tarjeta.
 
-## Claude Code (recomendado): plugin oficial
+## App de Claude (claude.ai, escritorio y móvil)
 
-Instala el conector MCP y las cuatro skills en un paso:
+1. Configuración → **Plugins** → Agregar → **Agregar desde un repositorio**.
+2. Pega `EmilianoMierUjed/skills_Consulto` y confirma.
+3. Instala **Consulto** de la lista.
+4. La primera vez que lo uses, Claude abre el inicio de sesión: entra con Google.
+
+Si te ofrece **sincronización automática con GitHub**, puedes saltarla: solo sirve para
+recibir actualizaciones solas y requiere darle acceso a la app de GitHub.
+
+Funciona también en el plan gratuito de Claude. Conectado una vez desde la web, el
+conector sirve igual en la app móvil.
+
+## Claude Code
 
 ```
 /plugin marketplace add EmilianoMierUjed/skills_Consulto
 /plugin install consulto-legal-mcp@consulto
 ```
 
-La primera vez ejecuta `/mcp` para completar el inicio de sesión en el navegador
-(usa el mismo correo de tu cuenta de Consulto).
+La primera vez ejecuta `/mcp` para completar el inicio de sesión en el navegador.
 
 Solo el conector, sin skills:
 
 ```
-claude mcp add --transport http consulto https://137-184-20-161.sslip.io/mcp
+claude mcp add --transport http consulto https://mcp.consulto.page/mcp
 ```
 
-## App de Claude (claude.ai)
+## Otros clientes MCP (Cursor, Codex, opencode, ChatGPT…)
 
-1. Configuración → Conectores → **Agregar conector personalizado**.
-2. Nombre: `Consulto` · URL: `https://137-184-20-161.sslip.io/mcp`.
-3. Inicia sesión con el correo de tu cuenta de Consulto.
-4. Skills: descarga los `.zip` desde el sitio de Consulto y súbelos en
-   Configuración → Capacidades → Skills.
-
-Conectado desde la web, el conector también funciona en la app móvil de Claude.
-
-## Otros clientes MCP (Codex, opencode, ChatGPT…)
-
-Pega el endpoint `https://137-184-20-161.sslip.io/mcp` en la configuración MCP de tu
+Pega el endpoint `https://mcp.consulto.page/mcp` en la configuración MCP de tu
 herramienta; el inicio de sesión OAuth se abre solo. Las skills de este repositorio
 (`skills/*/SKILL.md`) sirven como instrucciones de metodología en cualquier asistente.
+
+Guía paso a paso por herramienta: https://consulto.page/conectar
 
 ## Las 4 skills
 
