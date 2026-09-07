@@ -1,8 +1,8 @@
 {
   "name": "consulto-legal-mcp",
   "displayName": "Consulto",
-  "version": "0.3.1",
-  "description": "Skills jurídicas mexicanas y conector MCP para consultar jurisprudencia, sentencias SCJN, corpus iuris internacional y control difuso desde Claude. Cada cita con registro digital, documento oficial o link verificable.",
+  "version": "0.4.0",
+  "description": "Método de trabajo para amparo mexicano y conector MCP a cinco bases jurídicas. La IA localiza y verifica fuentes; el abogado escribe el argumento. Compuerta que coteja existencia, vigencia, obligatoriedad por circuito (art. 217 LA) y correspondencia textual literal de cada cita. El método corre con o sin el conector.",
   "author": {
     "name": "Emiliano Mier"
   },
@@ -12,6 +12,7 @@
   "keywords": [
     "legal",
     "mexico",
+    "amparo",
     "jurisprudencia",
     "scjn",
     "derechos-humanos",

@@ -1,28 +1,66 @@
-# Consulto — plugin y skills jurídicas
+# Consulto — método de amparo y conector a bases jurídicas mexicanas
 
-**Consulto** conecta tu asistente de IA (Claude, Claude Code, Cursor, Codex, opencode,
-ChatGPT) con jurisprudencia y sentencias de la SCJN (311,673 tesis y 105,803 engroses),
-las 316 leyes federales vigentes (55,224 artículos) y el corpus internacional de derechos
-humanos (277,239 documentos: Corte IDH, CIDH, comités ONU, OIT, tratados). Cada respuesta
-trae su cita con registro digital, documento oficial o link verificable.
+**Consulto** se compone de dos piezas con licencias y precios distintos a propósito:
 
-No necesitas cuenta previa: se crea al iniciar sesión, con 20 búsquedas gratis y sin
-tarjeta.
+1. **El método** (`skills/amparo/`) — flujo de trabajo para litigio de amparo
+   mexicano. **Abierto (Apache-2.0) y gratis.** Funciona con o sin el conector.
+2. **El conector** — acceso de solo lectura a cinco bases jurídicas mexicanas vía
+   MCP. **$150 MXN/mes**, con 20 búsquedas de prueba sin tarjeta.
 
-## App de Claude (claude.ai, escritorio y móvil)
+Regla de diseño de la que cuelga todo:
+
+> **Lo mecánico es de la IA. Lo interpretativo es del humano.**
+
+La IA localiza, coteja y verifica. Nunca interpreta, nunca prioriza, nunca
+argumenta. Un amparo es demasiado importante para delegarlo: el abogado que no
+construyó el argumento no puede defenderlo en audiencia.
+
+## El método (gratis, en este repo)
+
+Un flujo con fases, checkpoints obligatorios y una **compuerta de fuentes** que
+verifica cinco ejes por cada cita: existencia y procedencia, vigencia, ámbito de
+obligatoriedad (art. 217 LA), correspondencia textual literal y pertinencia (que
+nunca se evalúa: es el acto interpretativo central del litigio).
+
+Modos activos:
+
+- **`fundamentar`** — ya sabes qué pedir, te falta con qué fundarlo: rutas de
+  ataque, recolección con ronda adversa obligatoria, compuerta y andamio del
+  concepto de violación con los pasos interpretativos vacíos.
+- **`viabilidad`** — triage antes de que exista demanda, cuando no sabes si
+  tienes caso: acto reclamado, autoridad, interés, definitividad, procedencia
+  (art. 61 LA) y la regla de plazo aplicable, sin calcular fechas.
+
+El método corre **sin el conector**: declara `VIGENCIA_NO_VERIFICADA` y
+`AMBITO_NO_DETERMINADO` en vez de fingir que verificó, y nunca relaja la
+compuerta. El modo sin conector no es una versión limitada: es un método que
+dice, en cada corrida, exactamente qué pudo verificar y qué no.
+
+El método completo vive en [`skills/amparo/README.md`](skills/amparo/README.md).
+
+## El conector (de paga)
+
+Las bases que permiten resolver mecánicamente vigencia y obligatoriedad:
+
+| Base | Qué contiene |
+|---|---|
+| `scjn_tesis.db` | 311,738 tesis y jurisprudencia de la SCJN |
+| `scjn_sentencias.db` | 105,856 sentencias con el engrose íntegro |
+| `corpus_iuris.db` | 277,239 registros de corpus internacional (Corte IDH, CIDH, comités ONU, OIT) |
+| `leyes_federales.db` | 316 leyes federales vigentes, segmentadas en 55,224 artículos |
+| `grafo.db` | Grafo de vigencia y obligatoriedad: 472,063 criterios y 298,963 relaciones |
+
+Endpoint: `https://mcp.consulto.page/mcp` · Registro y prueba: <https://consulto.page>
+
+## Instalación
+
+### Claude (app web, escritorio y móvil)
 
 1. Configuración → **Plugins** → Agregar → **Agregar desde un repositorio**.
 2. Pega `EmilianoMierUjed/skills_Consulto` y confirma.
-3. Instala **Consulto** de la lista.
-4. La primera vez que lo uses, Claude abre el inicio de sesión: entra con Google.
+3. Instala **Consulto**. La primera vez, Claude abre el inicio de sesión.
 
-Si te ofrece **sincronización automática con GitHub**, puedes saltarla: solo sirve para
-recibir actualizaciones solas y requiere darle acceso a la app de GitHub.
-
-Funciona también en el plan gratuito de Claude. Conectado una vez desde la web, el
-conector sirve igual en la app móvil.
-
-## Claude Code
+### Claude Code
 
 ```
 /plugin marketplace add EmilianoMierUjed/skills_Consulto
@@ -30,30 +68,28 @@ conector sirve igual en la app móvil.
 ```
 
 La primera vez ejecuta `/mcp` para completar el inicio de sesión en el navegador.
-
-Solo el conector, sin skills:
+Solo el conector, sin el plugin:
 
 ```
 claude mcp add --transport http consulto https://mcp.consulto.page/mcp
 ```
 
-## Otros clientes MCP (Cursor, Codex, opencode, ChatGPT…)
+### Otros clientes MCP (Cursor, Codex, opencode, ChatGPT…)
 
-Pega el endpoint `https://mcp.consulto.page/mcp` en la configuración MCP de tu
-herramienta; el inicio de sesión OAuth se abre solo. Las skills de este repositorio
-(`skills/*/SKILL.md`) sirven como instrucciones de metodología en cualquier asistente.
+Pega el endpoint en la configuración MCP de tu herramienta; el inicio de sesión
+OAuth se abre solo. La carpeta `skills/amparo/` sirve como metodología en
+cualquier asistente.
 
 Guía paso a paso por herramienta: https://consulto.page/conectar
 
-## Las 4 skills
+## Estructura
 
-| Skill | Qué hace |
-|---|---|
-| `jurisprudencia` | Búsqueda SCJN con priorización de criterios obligatorios por circuito y links al Semanario |
-| `sentencias` | Búsqueda de engroses SCJN con snippets acotados, links oficiales y vínculo tesis→sentencia |
-| `corpus-iuris` | Estándares internacionales separados por valor vinculante, con URL oficial en cada fuente |
-| `control-difuso` | Metodología de 4 pasos de constitucionalidad y convencionalidad con citas verificables |
+```
+.claude-plugin/   plugin.json + marketplace.json (instalación como plugin)
+.mcp.json         servidor MCP con OAuth
+skills/amparo/    El método: SKILL.md, MODOS.md, agents/, references/, templates/
+```
 
 ## Licencia
 
-Apache-2.0.
+Apache-2.0. El método se publica para que se adopte, se critique y se mejore.

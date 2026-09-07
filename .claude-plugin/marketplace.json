@@ -3,12 +3,12 @@
   "owner": {
     "name": "Emiliano Mier"
   },
-  "description": "Marketplace oficial de Consulto: jurisprudencia y sentencias SCJN, corpus iuris internacional y control difuso vía MCP y skills.",
+  "description": "Marketplace oficial de Consulto: método de amparo mexicano y conector MCP a cinco bases jurídicas.",
   "plugins": [
     {
       "name": "consulto-legal-mcp",
       "source": "./",
-      "description": "Conector MCP jurídico + 4 skills de metodología (jurisprudencia, sentencias, corpus iuris, control difuso). Cada cita con registro digital, documento oficial o link verificable."
+      "description": "Método de amparo mexicano (skill única, con o sin conector) + conector MCP jurídico a cinco bases (SCJN, corpus iuris, leyes federales, grafo de vigencia)."
     }
   ]
 }
